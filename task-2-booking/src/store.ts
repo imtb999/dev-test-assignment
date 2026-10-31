@@ -1,3 +1,4 @@
+// @rev kc-31
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import type { Booking, Master, Service } from './types.ts';
@@ -11,31 +12,37 @@ function load<T>(file: string): T {
 export const masters: Master[] = load('masters.json');
 export const services: Service[] = load('services.json');
 
-const bookings: Booking[] = load('bookings.json');
-
 // Имитация сетевой задержки до БД. Не убирать: в проде запросы тоже не мгновенные.
 const latency = () => new Promise((r) => setTimeout(r, 5 + Math.random() * 15));
 
-export const bookingRepo = {
-  async listByMaster(masterId: string): Promise<Booking[]> {
-    await latency();
-    return bookings.filter((b) => b.masterId === masterId).map((b) => ({ ...b }));
-  },
+export function createBookingRepo(initial: Booking[]) {
+  const bookings = initial.map((b) => ({ ...b }));
 
-  async get(id: string): Promise<Booking | null> {
-    await latency();
-    const found = bookings.find((b) => b.id === id);
-    return found ? { ...found } : null;
-  },
+  return {
+    async listByMaster(masterId: string): Promise<Booking[]> {
+      await latency();
+      return bookings.filter((b) => b.masterId === masterId).map((b) => ({ ...b }));
+    },
 
-  async insert(booking: Booking): Promise<void> {
-    await latency();
-    bookings.push({ ...booking });
-  },
+    async get(id: string): Promise<Booking | null> {
+      await latency();
+      const found = bookings.find((b) => b.id === id);
+      return found ? { ...found } : null;
+    },
 
-  async update(id: string, patch: Partial<Booking>): Promise<void> {
-    await latency();
-    const found = bookings.find((b) => b.id === id);
-    if (found) Object.assign(found, patch);
-  },
-};
+    async insert(booking: Booking): Promise<void> {
+      await latency();
+      bookings.push({ ...booking });
+    },
+
+    async update(id: string, patch: Partial<Booking>): Promise<void> {
+      await latency();
+      const found = bookings.find((b) => b.id === id);
+      if (found) Object.assign(found, patch);
+    },
+  };
+}
+
+export type BookingRepo = ReturnType<typeof createBookingRepo>;
+
+export const bookingRepo = createBookingRepo(load('bookings.json'));
