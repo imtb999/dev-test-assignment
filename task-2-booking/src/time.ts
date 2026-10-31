@@ -1,3 +1,4 @@
+// @rev kc-31
 import type { Weekday } from './types.ts';
 
 // Казахстан живёт в одном часовом поясе
