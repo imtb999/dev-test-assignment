@@ -1,4 +1,3 @@
-// @rev kc-31
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { getSlots } from '../src/slots.ts';

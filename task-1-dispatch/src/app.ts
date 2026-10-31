@@ -1,4 +1,3 @@
-// @rev kc-31
 import { createServer, type Server, type ServerResponse } from 'node:http';
 import { isValidDate, type Dispatch } from './dispatch.ts';
 import type { Branch } from './types.ts';

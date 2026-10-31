@@ -1,4 +1,3 @@
-// @rev kc-31
 import { createApp } from './app.ts';
 import { createBookingService } from './booking.ts';
 import { now } from './clock.ts';

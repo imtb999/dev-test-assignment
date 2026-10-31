@@ -1,4 +1,3 @@
-// @rev kc-31
 import { createServer, type IncomingMessage, type Server, type ServerResponse } from 'node:http';
 import type { BookingService, Result } from './booking.ts';
 import type { Master, Service } from './types.ts';

@@ -1,4 +1,3 @@
-// @rev kc-31
 import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
 import type { AddressInfo } from 'node:net';

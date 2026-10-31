@@ -1,4 +1,3 @@
-// @rev kc-31
 import type { Assignment, Branch, Order, Rule } from './types.ts';
 import { distanceKm } from './geo.ts';
 

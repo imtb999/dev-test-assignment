@@ -1,4 +1,3 @@
-// @rev kc-31
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import type { Booking, Master, Service } from './types.ts';

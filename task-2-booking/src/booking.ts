@@ -1,4 +1,3 @@
-// @rev kc-31
 import { randomUUID } from 'node:crypto';
 import type { Booking, Master, Service } from './types.ts';
 import type { BookingRepo } from './store.ts';

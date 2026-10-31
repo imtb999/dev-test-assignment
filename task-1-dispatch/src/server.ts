@@ -1,4 +1,3 @@
-// @rev kc-31
 import { createApp } from './app.ts';
 import { createDispatch } from './dispatch.ts';
 import { branches, orders } from './store.ts';

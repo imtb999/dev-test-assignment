@@ -1,4 +1,3 @@
-// @rev kc-31
 import type { Assignment, Branch, Order } from './types.ts';
 import { assignBranch } from './router.ts';
 

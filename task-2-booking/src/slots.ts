@@ -1,4 +1,3 @@
-// @rev kc-31
 import type { Booking, Master, Service } from './types.ts';
 import { fromMinutes, overlaps, toMinutes, weekday, type Range } from './time.ts';
 
